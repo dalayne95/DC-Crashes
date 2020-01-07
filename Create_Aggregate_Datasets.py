@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy import stats
+
 from CallAPIs import *
 from Clean_Orig_Data import *
 
@@ -86,7 +88,7 @@ sum_cols_df = sum_cols_df[['STREETSEGID','MAJORINJURIES_BICYCLIST',
 streets_df_trim = streets_df.merge(sum_cols_df, on = 'STREETSEGID', how = 'inner')
 streets_df = streets_df.merge(sum_cols_df, on = 'STREETSEGID', how = 'outer')
 
-# Clean the dataset! Impute null values as zero? or trim dataset?
+# Clean the full dataset! Impute null values as zero? or trim dataset?
 streets_df_trim.fillna(0, inplace=True)
 streets_df.fillna(0, inplace=True)
 
@@ -94,3 +96,51 @@ totals_df = pd.DataFrame(streets_df.sum()).reset_index()
 totals_df = totals_df.rename(columns = {'index' : 'REPORT', 0 : 'COUNT'}).drop([0], axis = 0)
 
 totals_by_ward_df = streets_df.groupby('WARD').sum().reset_index()
+
+# Create data subsets for hypothesis testing
+safety_by_ward_df = totals_by_ward_df[['WARD', 'SAFETY_CONCERNS']]
+safety_by_ward_df = safety_by_ward_df[1:9]
+
+bike_route_info_df = streets_df.groupby('BIKE_R').sum().reset_index()
+bike_route_info_df = bike_route_info_df[['SAFETY_CONCERNS', 'TOTAL_VEHICLES', 'TOTAL_BICYCLES', 'TOTAL_PEDESTRIANS']]
+bike_route_info_df = bike_route_info_df.rename(index = {0:'Non Bike Route', 1: 'Bike Route'})
+
+trafcam_info_df = streets_df.groupby('TRAFFIC_CAM').sum().reset_index()
+trafcam_info_df = trafcam_info_df[['SAFETY_CONCERNS', 'Speeding', 'SPEEDING_INVOLVED', 
+                                   'TOTAL_VEHICLES', 'TOTAL_BICYCLES', 'TOTAL_PEDESTRIANS']]
+trafcam_info_df = trafcam_info_df.rename(index = {0:'No Traffic Camera', 1: 'Traffic Camera'})
+
+safety_accid_by_ward_df = totals_by_ward_df[['WARD', 'SAFETY_CONCERNS', 'TOTAL_VEHICLES', 'TOTAL_PEDESTRIANS' ]]
+safety_accid_by_ward_df = safety_accid_by_ward_df[1:9]
+
+# Looks specifically at accidents
+pd.options.display.max_columns = None
+ward_accidents_df = crashes_df.groupby(["WARD"]).agg('count')
+
+ward_accidents_df = ward_accidents_df.rename(columns={"OBJECTID": "incidents"})
+ward_accidents_df = ward_accidents_df.drop(columns=['CRIMEID', 'CCN', 'REPORTDATE', 'ROUTEID', 'MEASURE', 'OFFSET', 'ROADWAYSEGID', 'FROMDATE', 'TODATE', 'MARID', 'ADDRESS', 'LATITUDE', 'LONGITUDE', 'XCOORD', 'YCOORD', 'EVENTID', 'MAR_ADDRESS', 'MAR_SCORE'])
+
+ward_accidents = ward_accidents_df[['incidents']].copy()
+ward_accidents = ward_accidents.drop(['Null'])
+
+
+# Hypothesis #3
+ward_count = crashes_df.groupby(['WARD']).agg('count')
+
+ward_count = ward_count[['OBJECTID']].copy()
+ward_count = ward_count.drop(['Null'])
+
+injuries = crashes_df.groupby(['WARD']).agg('sum')
+
+injuries['bike_total_injuries'] = injuries['MAJORINJURIES_BICYCLIST'] + injuries['MINORINJURIES_BICYCLIST'] + injuries['UNKNOWNINJURIES_BICYCLIST']                                       
+injuries['driver_total_injuries'] = injuries['MAJORINJURIES_DRIVER'] + injuries['MINORINJURIES_DRIVER'] + injuries['UNKNOWNINJURIES_DRIVER']
+injuries['pedestrian_total_injuries'] = injuries['MAJORINJURIES_PEDESTRIAN'] + injuries['MINORINJURIES_PEDESTRIAN'] + injuries['UNKNOWNINJURIES_PEDESTRIAN']
+
+injuries = injuries[['pedestrian_total_injuries','bike_total_injuries','driver_total_injuries']]        
+
+ward_injuries = pd.concat([ward_count, injuries], axis=1)
+ward_injuries = ward_injuries.drop(['Null'])
+ward_injuries = ward_injuries.rename(columns={"OBJECTID": "incidents"})
+
+ward_injuries['total_injuries'] = ward_injuries['pedestrian_total_injuries'] + ward_injuries['bike_total_injuries'] + ward_injuries['driver_total_injuries']
+ward_injuries = ward_injuries.drop(['incidents','pedestrian_total_injuries','bike_total_injuries','driver_total_injuries'], axis=1)
