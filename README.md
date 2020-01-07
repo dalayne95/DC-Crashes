@@ -5,7 +5,7 @@
 - Nimu Sidhu (@gksidhu)
 
 ## Goals:
-- The goal of this analysis is to gain a better understanding of factors influencing the number of traffic accidents, injuries, fatalities, and safety concern reports in Washington, D.C. Specifically, we tested whether ward, traffic cameras, and bike routes have a significant association with traffic safety.
+The goal of this analysis is to gain a better understanding of factors influencing the number of traffic accidents, injuries, fatalities, and safety concern reports in Washington, D.C. Specifically, we tested whether ward, traffic cameras, and bike routes have a significant association with traffic safety.
 
 ## Summary and Links to Files: 
 - SlideDeck (pdf) 
