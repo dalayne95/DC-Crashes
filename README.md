@@ -15,9 +15,9 @@ The goal of this analysis is to gain a better understanding of factors influenci
   - [Traffic Cameras](https://opendata.dc.gov/datasets/traffic-camera)
   - [Signed Bike Routes](https://opendata.dc.gov/datasets/signed-bike-routes/data)
 - Notebooks 
-  - Technical Notebook: darian_nimu_mod_3.ipynb
-  - Exploratory Data Analysis: EDA.ipynb
+  - [Technical Notebook](https://github.com/dalayne95/DC-Crashes/blob/master/Technical_notebook.ipynb)
+  - [Exploratory Data Analysis](https://github.com/dalayne95/DC-Crashes/blob/master/EDA.ipynb)
 - Python files 
-  - API Calls: CallAPIs.py
-  - Cleaning Data: Clean_Orig_Data.py
-  - Cleaning Combined Dataframes: Create_Aggregate_Datasets.py
+  - [API Calls](https://github.com/dalayne95/DC-Crashes/blob/master/CallAPIs.py)
+  - [Cleaning Data](https://github.com/dalayne95/DC-Crashes/blob/master/Clean_Orig_Data.py)
+  - [Combining Data for Analysis](https://github.com/dalayne95/DC-Crashes/blob/master/Create_Aggregate_Datasets.py)
