@@ -110,7 +110,7 @@ trafcam_info_df = trafcam_info_df[['SAFETY_CONCERNS', 'Speeding', 'SPEEDING_INVO
                                    'TOTAL_VEHICLES', 'TOTAL_BICYCLES', 'TOTAL_PEDESTRIANS']]
 trafcam_info_df = trafcam_info_df.rename(index = {0:'No Traffic Camera', 1: 'Traffic Camera'})
 
-safety_accid_by_ward_df = totals_by_ward_df[['WARD', 'SAFETY_CONCERNS', 'TOTAL_VEHICLES', 'TOTAL_PEDESTRIANS' ]]
+safety_accid_by_ward_df = totals_by_ward_df[['WARD', 'SAFETY_CONCERNS', 'TOTAL_VEHICLES', 'TOTAL_PEDESTRIANS', 'TOTAL_BICYCLES']]
 safety_accid_by_ward_df = safety_accid_by_ward_df[1:9]
 
 # Looks specifically at accidents
