@@ -8,7 +8,7 @@
 The goal of this analysis is to gain a better understanding of factors influencing the number of traffic accidents, and safety concern reports in Washington, D.C. Specifically, we tested whether ward, traffic cameras, and bike routes have a significant association with traffic safety.
 
 ## Summary of Files: 
-- [SlideDeck](https://docs.google.com/presentation/d/1qSg4Fq_m1HTXrvyCTvU4qbk6bxT8BXK9W7q8cISMkuQ/edit?usp=sharing)
+- [Slide Deck](https://docs.google.com/presentation/d/1qSg4Fq_m1HTXrvyCTvU4qbk6bxT8BXK9W7q8cISMkuQ/edit?usp=sharing)
 - Data Sources
   - [Crashes in DC](https://opendata.dc.gov/datasets/crashes-in-dc/data)
   - [Vision Zero Safety](https://opendata.dc.gov/datasets/vision-zero-safety/)
