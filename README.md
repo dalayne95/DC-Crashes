@@ -13,7 +13,7 @@ The goal of this analysis is to gain a better understanding of factors influenci
   - [Crashes in DC](https://opendata.dc.gov/datasets/crashes-in-dc/data)
   - [Vision Zero Safety](https://opendata.dc.gov/datasets/vision-zero-safety/)
   - [Traffic Cameras](https://opendata.dc.gov/datasets/traffic-camera)
-  - [Signed Bike Routes](https://opendata.dc.gov/datasets/signed-bike-routes/data
+  - [Signed Bike Routes](https://opendata.dc.gov/datasets/signed-bike-routes/data)
 - Notebooks 
   - Technical Notebook: darian_nimu_mod_3.ipynb
   - Exploratory Data Analysis: EDA.ipynb
