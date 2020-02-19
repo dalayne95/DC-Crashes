@@ -1,4 +1,4 @@
-# Title: Traffic Safety in Washington, D.C.
+# Traffic Safety in Washington, D.C.
 
 ## Contributors:
 - [Darian Madere](https://github.com/dalayne95)
