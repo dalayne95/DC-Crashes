@@ -1,8 +1,8 @@
 # Title: Traffic Safety in Washington, D.C.
 
 ## Contributors:
-- Darian Madere (@dalayne95) 
-- Nimu Sidhu (@gksidhu)
+- [Darian Madere](https://github.com/dalayne95)
+- [Nimu Sidhu](https://github.com/gksidhu)
 
 ## Goals:
 The goal of this analysis is to gain a better understanding of factors influencing the number of traffic accidents, injuries, and safety concern reports in Washington, D.C. Specifically, we tested whether ward, traffic cameras, and bike routes have a significant association with traffic safety.
